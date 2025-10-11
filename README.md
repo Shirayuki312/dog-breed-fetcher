@@ -116,7 +116,7 @@ This API can also return URLs to pictures of dogs of a specified breed.
 - [ ] Read the [documentation for this part of the API](https://dog.ceo/dog-api/documentation/breed)
     and write code to get one of these image URLs and display the image in a simple GUI.
 
-The result might look something like this:
+The result might look something like this: 
 
 ![Sample GUI for Bonus Task](images/bonus_sample.png)
 
