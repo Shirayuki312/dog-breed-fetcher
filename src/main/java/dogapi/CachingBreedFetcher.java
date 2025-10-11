@@ -22,11 +22,11 @@ public class CachingBreedFetcher implements BreedFetcher {
     }
 
     @Override
-    public List<String> getSubBreeds(String breed) {
+    public List<String> getSubBreeds(String breed) throws BreedFetcher.BreedNotFoundException {
         // return statement included so that the starter code can compile and run.
         String key = breed.toLowerCase(Locale.ROOT);
 
-        if (cache.containsKey(key)) {
+        if (this.cache.containsKey(key)) {
             return cache.get(key);
         }
 
@@ -35,12 +35,12 @@ public class CachingBreedFetcher implements BreedFetcher {
             List<String> subBreeds = breedFetcher.getSubBreeds(breed);
             cache.put(key, subBreeds);
             return subBreeds;
-        } catch (BreedNotFoundException e) {
+        } catch (BreedFetcher.BreedNotFoundException e) {
             throw e;
         }
     }
 
     public int getCallsMade() {
-        return callsMade;
+        return this.callsMade;
     }
 }

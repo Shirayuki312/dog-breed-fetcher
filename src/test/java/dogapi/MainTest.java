@@ -23,8 +23,13 @@ class MainTest {
     @Test
     void exceptionTypeTest() {
         BreedFetcher.BreedNotFoundException bfe = new BreedFetcher.BreedNotFoundException("hound");
-        assertTrue(bfe instanceof Exception && !(bfe instanceof RuntimeException),
-                "BreedFetcher.BreedNotFoundException must be a checked exception.");
+
+        // 1️⃣ must be a subclass of Exception
+        assertTrue(bfe instanceof Exception, "BreedFetcher.BreedNotFoundException must extend Exception.");
+
+        // 2️⃣ must NOT be a subclass of RuntimeException
+        boolean isRuntime = RuntimeException.class.isAssignableFrom(bfe.getClass());
+        assertTrue(!isRuntime, "BreedFetcher.BreedNotFoundException must NOT extend RuntimeException.");
     }
 
 }
